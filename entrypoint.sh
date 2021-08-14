@@ -14,7 +14,7 @@ check_database_connection() {
       prog="${prog} -h ${DB_HOST} -p ${DB_PORT} -U ${DB_USERNAME} -d ${DB_DATABASE} -t 1"
       ;;
     sqlite)
-      prog="touch /var/www/html/database/database.sqlite"
+      prog="touch ${DB_DATABASE:-/var/www/html/database/database.sqlite}"
   esac
   timeout=60
   while ! ${prog} >/dev/null 2>&1
@@ -100,7 +100,6 @@ initialize_system() {
   fi
 
   if [[ "${DB_DRIVER}" = "sqlite" ]]; then
-    DB_DATABASE=""
     DB_HOST=""
     DB_PORT=""
     DB_USERNAME=""
