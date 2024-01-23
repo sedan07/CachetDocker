@@ -25,4 +25,5 @@ jobs:
       registry: ghcr.io
       image: dbildungsplattform/cachet
       tag: ${{ needs.pre_build.outputs.tag }}
+      prefix: v
       suffix: ${{ needs.pre_build.outputs.suffix }}
