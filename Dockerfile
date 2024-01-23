@@ -7,7 +7,7 @@ ARG cachet_ver
 ARG archive_url
 
 ENV cachet_ver ${cachet_ver:-2.5}
-ENV archive_url ${archive_url:-https://github.com/fiveai/Cachet/archive/${cachet_ver}.tar.gz}
+ENV archive_url https://github.com/dBildungsplattform/Cachet/archive/2.5.tar.gz
 
 ENV COMPOSER_VERSION 1.9.0
 
