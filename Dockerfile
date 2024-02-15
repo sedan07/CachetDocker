@@ -1,4 +1,4 @@
-FROM nginx:1.17.10-alpine
+FROM nginx:1.21-alpine
 
 EXPOSE 8000
 CMD ["/sbin/entrypoint.sh"]
@@ -54,6 +54,8 @@ RUN apk add --no-cache --update \
     wget sqlite git curl bash grep \
     supervisor
 
+# upgrade curl to address CVE-2023-38545 and liburl as dependency
+RUN apk upgrade --no-cache --update -U libcurl curl
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log && \
